@@ -1,0 +1,9 @@
+{
+  "preset": "ops",
+  "plan": "pemantau",
+  "execute": "pemantau",
+  "review": "pelapor",
+  "max_review_rounds": 1,
+  "commit": false,
+  "push": false
+}

@@ -1,0 +1,9 @@
+{
+  "preset": "konten",
+  "plan": "editor",
+  "execute": "penulis",
+  "review": "pemeriksa-fakta",
+  "max_review_rounds": 5,
+  "commit": true,
+  "push": false
+}

@@ -1,0 +1,9 @@
+# Data runtime kantor 3D (bila dipasang di dalam clone ini untuk uji) — template kerja/storage/.gitkeep tetap ikut
+kerja/storage/*
+!kerja/storage/.gitkeep
+**/kerja/storage/*
+!**/kerja/storage/.gitkeep
+
+node_modules/
+.DS_Store
+*.log

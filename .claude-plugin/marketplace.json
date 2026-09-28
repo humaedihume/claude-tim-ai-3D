@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "claude-tim-ai-3D",
+  "description": "Tim AI multi-agent untuk Claude Code + Kantor 3D untuk memantaunya.",
+  "owner": { "name": "sambu-la", "url": "https://github.com/sambu-la" },
+  "plugins": [
+    {
+      "name": "tim-ai",
+      "source": "./plugins/tim-ai",
+      "description": "Bentuk tim multi-agent Claude Code dengan alur rancang → kerjakan → review → simpan, planning/, dan kantor 3D. Memasang kantor-3d otomatis sebagai dependensi.",
+      "category": "productivity",
+      "tags": ["subagents", "multi-agent", "workflow", "planning"]
+    },
+    {
+      "name": "kantor-3d",
+      "source": { "source": "github", "repo": "sambu-la/kantor-3d" },
+      "description": "Kantor 3D (three.js) di <host>/kerja yang menampilkan agent Claude Code sebuah project bekerja atau istirahat dari transkrip nyata. Dipakai tim-ai; bisa juga dipasang sendiri.",
+      "homepage": "https://github.com/sambu-la/kantor-3d#readme",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": ["subagents", "dashboard", "three.js", "visualization"]
+    }
+  ]
+}

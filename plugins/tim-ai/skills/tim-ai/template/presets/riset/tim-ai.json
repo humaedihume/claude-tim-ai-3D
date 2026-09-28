@@ -1,0 +1,9 @@
+{
+  "preset": "riset",
+  "plan": "peneliti",
+  "execute": "analis-data",
+  "review": "penyunting",
+  "max_review_rounds": 5,
+  "commit": true,
+  "push": false
+}

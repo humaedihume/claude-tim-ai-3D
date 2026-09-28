@@ -1,0 +1,9 @@
+{
+  "preset": "software",
+  "plan": "analyst",
+  "execute": "developer",
+  "review": "qa",
+  "max_review_rounds": 5,
+  "commit": true,
+  "push": false
+}
