@@ -4,9 +4,9 @@
   "displayName": "Tim AI",
   "version": "1.0.0",
   "description": "Bentuk tim multi-agent Claude Code (preset software, konten, riset, ops, atau kustom) dengan alur rancang → kerjakan → review → simpan, folder planning/, dan kantor 3D untuk memantaunya.",
-  "author": { "name": "sambu-la", "url": "https://github.com/sambu-la" },
-  "homepage": "https://github.com/sambu-la/claude-tim-ai-3D#readme",
-  "repository": "https://github.com/sambu-la/claude-tim-ai-3D",
+  "author": { "name": "humaedihume", "url": "https://github.com/humaedihume" },
+  "homepage": "https://github.com/humaedihume/claude-tim-ai-3D#readme",
+  "repository": "https://github.com/humaedihume/claude-tim-ai-3D",
   "license": "MIT",
   "keywords": ["claude-code", "subagents", "multi-agent", "workflow", "planning", "qa", "indonesia"],
   "dependencies": ["kantor-3d"]

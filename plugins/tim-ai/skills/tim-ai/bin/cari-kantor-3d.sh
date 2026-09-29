@@ -37,9 +37,9 @@ done
 
 cat >&2 <<'EOF'
 Skill kantor-3d tidak ditemukan. Pasang salah satu:
-  • Plugin : /plugin marketplace add sambu-la/kantor-3d  lalu  /plugin install kantor-3d@kantor-3d
+  • Plugin : /plugin marketplace add humaedihume/kantor-3d  lalu  /plugin install kantor-3d@kantor-3d
              (atau lewat marketplace tim-ai: /plugin install tim-ai@claude-tim-ai-3D memasang keduanya)
-  • Manual : git clone https://github.com/sambu-la/kantor-3d && cp -R kantor-3d/skills/kantor-3d ~/.claude/skills/
+  • Manual : git clone https://github.com/humaedihume/kantor-3d && cp -R kantor-3d/skills/kantor-3d ~/.claude/skills/
 Lalu /reload-plugins (atau buka sesi baru). Lokasi lain: set KANTOR_3D_DIR=<folder skill kantor-3d>.
 EOF
 exit 1

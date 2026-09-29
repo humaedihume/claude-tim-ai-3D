@@ -5,9 +5,9 @@
 > (content), *riset* (research), *ops*, or custom roles) for you to confirm, then installs the agents
 > (`.claude/agents/`), a written **plan → execute → review → commit** workflow with the project commands
 > `/rancang` `/kerjakan` `/uji` `/jalankan` `/papan`, a `planning/` folder, and a live 3D office to watch the team
-> work. The 3D office is the separate [kantor-3d](https://github.com/sambu-la/kantor-3d) plugin, declared as a plugin
+> work. The 3D office is the separate [kantor-3d](https://github.com/humaedihume/kantor-3d) plugin, declared as a plugin
 > dependency and installed automatically — no duplicated code. Install with
-> `/plugin marketplace add sambu-la/claude-tim-ai-3D` → `/plugin install tim-ai@claude-tim-ai-3D`, then run
+> `/plugin marketplace add humaedihume/claude-tim-ai-3D` → `/plugin install tim-ai@claude-tim-ai-3D`, then run
 > `/tim-ai:tim-ai` in your project. UI and docs are in Bahasa Indonesia. MIT licensed.
 
 ![Tim AI dipantau di Kantor 3D](docs/tim-ai-desktop.webp)
@@ -22,7 +22,7 @@ Repo ini berisi marketplace `claude-tim-ai-3D` dengan dua entri:
 | Plugin | Isi | Sumber |
 |---|---|---|
 | `tim-ai` | skill `tim-ai` (+ template agent, perintah, planning) | folder [`plugins/tim-ai`](plugins/tim-ai) di repo ini |
-| `kantor-3d` | skill `kantor-3d` (dashboard 3D `/kerja`) | repo [sambu-la/kantor-3d](https://github.com/sambu-la/kantor-3d) — **dependensi** `tim-ai` |
+| `kantor-3d` | skill `kantor-3d` (dashboard 3D `/kerja`) | repo [humaedihume/kantor-3d](https://github.com/humaedihume/kantor-3d) — **dependensi** `tim-ai` |
 
 ## Daftar isi
 - [Kebutuhan](#kebutuhan) · [Mulai cepat](#mulai-cepat-plugin) · [Pasang manual](#pasang-manual)
@@ -40,18 +40,18 @@ Repo ini berisi marketplace `claude-tim-ai-3D` dengan dua entri:
 | **PHP ≥ 8.1** (+ `mbstring`) | Opsional — runtime alternatif kantor 3D (cukup salah satu: PHP atau Node). |
 | git | Disarankan — "simpan" = satu commit per plan yang lolos review (tanpa git: langkah commit dilewati). |
 | Playwright | Opsional (preset software) — `tools/qa/shot.mjs` untuk bukti screenshot QA. |
-| Valet / Nginx / cloudflared | Opsional — cara menyajikan kantor 3D (lihat [README kantor-3d](https://github.com/sambu-la/kantor-3d#mode-menjalankan)). |
+| Valet / Nginx / cloudflared | Opsional — cara menyajikan kantor 3D (lihat [README kantor-3d](https://github.com/humaedihume/kantor-3d#mode-menjalankan)). |
 
 ## Mulai cepat (plugin)
 ```text
-/plugin marketplace add sambu-la/claude-tim-ai-3D
+/plugin marketplace add humaedihume/claude-tim-ai-3D
 /plugin install tim-ai@claude-tim-ai-3D
 /reload-plugins
 ```
-Atau dari terminal: `claude plugin marketplace add sambu-la/claude-tim-ai-3D && claude plugin install tim-ai@claude-tim-ai-3D`.
+Atau dari terminal: `claude plugin marketplace add humaedihume/claude-tim-ai-3D && claude plugin install tim-ai@claude-tim-ai-3D`.
 
 `tim-ai` mendeklarasikan `"dependencies": ["kantor-3d"]`, jadi Claude Code ikut memasang `kantor-3d` dari marketplace
-yang sama (yang mengambilnya dari repo `sambu-la/kantor-3d`). Cek dengan `claude plugin list` — keduanya harus ada.
+yang sama (yang mengambilnya dari repo `humaedihume/kantor-3d`). Cek dengan `claude plugin list` — keduanya harus ada.
 
 Lalu buka Claude Code **di root project-mu** dan jalankan:
 ```text
@@ -70,8 +70,8 @@ dan cara menyajikan kantor 3D), lalu memasang semuanya **tanpa menimpa** file ya
 ## Pasang manual
 Tanpa sistem plugin, pasang **kedua** skill sebagai skill biasa (`/tim-ai` dan `/kantor-3d`):
 ```bash
-git clone https://github.com/sambu-la/claude-tim-ai-3D.git
-git clone https://github.com/sambu-la/kantor-3d.git
+git clone https://github.com/humaedihume/claude-tim-ai-3D.git
+git clone https://github.com/humaedihume/kantor-3d.git
 mkdir -p ~/.claude/skills
 cp -R claude-tim-ai-3D/plugins/tim-ai/skills/tim-ai ~/.claude/skills/
 cp -R kantor-3d/skills/kantor-3d ~/.claude/skills/
@@ -196,7 +196,7 @@ kerja/ (plugin kantor-3d, PHP atau Node) ─► GET /kerja + /kerja/api/state �
   meja dari `agentType` atau awalan itu.
 - Kantor 3D membaca `planning/` (mode `planning`) dan `.claude/tim-ai.json` (peran penanya & label kolom review).
 - Detail teknis: [`BRIEF.md` tim-ai](plugins/tim-ai/skills/tim-ai/BRIEF.md) dan
-  [BRIEF kantor-3d](https://github.com/sambu-la/kantor-3d/blob/main/skills/kantor-3d/BRIEF.md).
+  [BRIEF kantor-3d](https://github.com/humaedihume/kantor-3d/blob/main/skills/kantor-3d/BRIEF.md).
 
 ## Konfigurasi
 **`.claude/tim-ai.json`** (dipasang dari preset):
@@ -215,7 +215,7 @@ kerja/ (plugin kantor-3d, PHP atau Node) ─► GET /kerja + /kerja/api/state �
 `memory: project`, `color`, dan bagian "PROJECT — SESUAIKAN" (stack, lokasi berkas, perintah uji, larangan).
 Peran baru: salin `template/agent-kustom.md`, isi semua `<…>`, lalu pasang lewat `tim-ai.json` atau penanda `@<key>`.
 
-**Kantor 3D** — `kerja/config.json` opsional (lihat [konfigurasi kantor-3d](https://github.com/sambu-la/kantor-3d#konfigurasi)):
+**Kantor 3D** — `kerja/config.json` opsional (lihat [konfigurasi kantor-3d](https://github.com/humaedihume/kantor-3d#konfigurasi)):
 peran dibaca otomatis dari `.claude/agents` dan `agentType` di transkrip; `"auto": false` untuk hanya menampilkan
 peran di config; `hide` untuk menyembunyikan peran; `roles[].name/role/color/look` untuk nama & tampilan karakter,
 mis. `{"roles":[{"key":"analyst","name":"Pingot","asks_user":true}],"orchestrator":{"name":"Risko"}}` (nama contoh).
@@ -277,7 +277,7 @@ orkestrator otomatis memakai `general-purpose` + "Peranmu: baca `.claude/agents/
 
 **Tidak ada karakter di kantor / subagent tidak terdeteksi.** Pastikan Claude Code dijalankan di folder project yang
 sama dengan `kerja/`, server berjalan sebagai user yang sama, dan deskripsi Agent diawali nama peran. Lihat
-[FAQ kantor-3d](https://github.com/sambu-la/kantor-3d#masalah-umum--faq) (permission home `750` di Nginx, port
+[FAQ kantor-3d](https://github.com/humaedihume/kantor-3d#masalah-umum--faq) (permission home `750` di Nginx, port
 8787 terpakai, dll.).
 
 **Review terus FAIL.** Standarnya nol bug; setelah `max_review_rounds` alur berhenti dan bertanya. Bila kriteria
@@ -291,7 +291,7 @@ penerimaannya yang keliru, peninjau menandai `AC-KELIRU` dan perancang merevisi 
   sebelum commit; `kerja/storage/` dan `planning/qa/evidence/` masuk `.gitignore`.
 - Kantor 3D hanya menampilkan ringkasan aksi (nama tool, path relatif, deskripsi perintah — bukan argumen atau
   output), dengan redaksi otomatis pola rahasia (`password=…`, `sk-…`, `ghp_…`, `AKIA…`, hex panjang, …). Detail di
-  [privasi kantor-3d](https://github.com/sambu-la/kantor-3d#privasi).
+  [privasi kantor-3d](https://github.com/humaedihume/kantor-3d#privasi).
 
 ## Batasan
 - Agent baru aktif di sesi berikutnya; subagent dipanggil berurutan dalam alur otomatis (satu plan kecil ≤ ~10 tugas
@@ -300,14 +300,14 @@ penerimaannya yang keliru, peninjau menandai `AC-KELIRU` dan perancang merevisi 
 - Kantor 3D: maks 6 meja + orkestrator; routine cloud tidak tampil. Antarmuka & template berbahasa Indonesia.
 
 ## Kontribusi
-Issue dan pull request dipersilakan di [github.com/sambu-la/claude-tim-ai-3D](https://github.com/sambu-la/claude-tim-ai-3D)
-(kantor 3D: [sambu-la/kantor-3d](https://github.com/sambu-la/kantor-3d)).
+Issue dan pull request dipersilakan di [github.com/humaedihume/claude-tim-ai-3D](https://github.com/humaedihume/claude-tim-ai-3D)
+(kantor 3D: [humaedihume/kantor-3d](https://github.com/humaedihume/kantor-3d)).
 - Jaga format `planning/` (dibaca kantor 3D) dan kompatibilitas `.claude/tim-ai.json`.
 - Validasi: `claude plugin validate .`, `claude plugin validate plugins/tim-ai`, dan
   `node plugins/tim-ai/skills/tim-ai/bin/periksa.mjs <project-uji>` setelah memasang ke project uji.
 - Jangan menyertakan data project nyata di contoh atau tangkapan layar.
 
 ## Lisensi
-[MIT](LICENSE) © sambu-la. Asal-usul: tim Analyst → Developer → QA yang dipakai di sebuah project nyata (±240 run
+[MIT](LICENSE) © humaedihume. Asal-usul: tim Analyst → Developer → QA yang dipakai di sebuah project nyata (±240 run
 subagent, 20 plan), lalu digeneralisasi menjadi preset. Kantor 3D (repo terpisah) menyertakan three.js, marked, dan
-DOMPurify — lihat [THIRD_PARTY_NOTICES](https://github.com/sambu-la/kantor-3d/blob/main/THIRD_PARTY_NOTICES.md).
+DOMPurify — lihat [THIRD_PARTY_NOTICES](https://github.com/humaedihume/kantor-3d/blob/main/THIRD_PARTY_NOTICES.md).
